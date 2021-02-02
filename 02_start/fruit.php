@@ -1,0 +1,42 @@
+<?php
+error_reporting( E_ALL );
+ini_set( 'display_errors', 1 );
+
+$public_access = false;
+require_once "lib/autoload.php";
+
+PrintHead();
+PrintJumbo( $title = "Fruit" ,
+                        $subtitle = "" );
+PrintNavbar();
+?>
+
+<div class="container">
+    <div class="row">
+
+<?php
+
+    $output = "Spelen met fruit<br>";
+
+    $ananas = new Fruit( $pname="Mooie Ananas", $pcolor="bruin/groen" );
+    $kiwi = new Fruit( $pname="Gele Kiwi", $pcolor="geel" );
+    $aardbei1 = new Aardbei( $pname="Grote Aardbei", $pcolor="rood" );
+    $aardbei1->setSmaak("Heel zoet");
+
+    $output .= "We hebben een " . $ananas->getCapsname() . "<br>";
+    print "<br><br>";
+    $output .= "en ook een " . $kiwi->getName() . "<br>";
+    $output .= "en ook een " . $aardbei1->getName() . " en die is " . $aardbei1->getSmaak() . "<br>";
+
+    if ( $kiwi instanceof Fruit ) print "De kiwi is wel degelijk een stuk fruit, en geen vogel";
+
+    print "<br><br>";
+
+    print $output;
+?>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -20,6 +20,7 @@ PrintNavbar();
 
     $ananas = new Fruit( $pname="Mooie Ananas", $pcolor="bruin/groen" );
     $kiwi = new Fruit( $pname="Gele Kiwi", $pcolor="geel" );
+    $kiwi_1 = new Fruit( $pname="Blauwe Kiwi", $pcolor="blauw" );
     $aardbei1 = new Aardbei( $pname="Grote Aardbei", $pcolor="rood" );
     $aardbei1->setSmaak("Heel zoet");
 
@@ -29,6 +30,16 @@ PrintNavbar();
     $output .= "en ook een " . $aardbei1->getName() . " en die is " . $aardbei1->getSmaak() . "<br>";
 
     if ( $kiwi instanceof Fruit ) print "De kiwi is wel degelijk een stuk fruit, en geen vogel";
+
+    //lijst (array) van objecten
+    $mijn_stukken_fruit = [ $ananas, $kiwi, $kiwi_1, $aardbei1 ];
+
+    print "Overzicht van mijn fruitmand:<br>";
+
+    foreach( $mijn_stukken_fruit as $stuk_fruit )
+    {
+        print $stuk_fruit->getName() . ",";
+    }
 
     print "<br><br>";
 

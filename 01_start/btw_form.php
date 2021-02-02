@@ -21,7 +21,7 @@ PrintNavbar();
             $output = file_get_contents("templates/btw_form.html");
 
             //add extra elements
-            $extra_elements['csrf_token'] = GenerateCSRF( "profiel.php"  );
+            $extra_elements['csrf_token'] = GenerateCSRF( "btw_form.php"  );
 
             //merge
             $output = MergeViewWithData( $output, $data );

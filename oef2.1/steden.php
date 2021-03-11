@@ -31,14 +31,13 @@ PrintNavbar();
     $template = file_get_contents("templates/column.html");
 
     //get weather
-    $data_count = 0;
-    foreach( $data as $row )
+    $restClient = new RESTClient( $authentication = null );
+
+    foreach( $data as $key => $row )
     {
         $url = 'http://api.openweathermap.org/data/2.5/weather?q=' .
                         $row["img_weather_location"] .
                         '&units=metric&lang=nl&APPID=e97bd757a9b4c619b67d39814366db46';
-
-        $restClient = new RESTClient( $authentication = null );
 
         $restClient->CurlInit($url);
         $response = json_decode($restClient->CurlExec());
@@ -47,10 +46,9 @@ PrintNavbar();
         $weer_temp = round( $response->main->temp, 0);
         $weer_vochtigheid = $response->main->humidity;
 
-        $data[$data_count]['weer_omschr'] = $weer_omschr;
-        $data[$data_count]['weer_temp'] = $weer_temp;
-        $data[$data_count]['weer_vochtigheid'] = $weer_vochtigheid;
-        $data_count++;
+        $data[$key]['weer_omschr'] = $weer_omschr;
+        $data[$key]['weer_temp'] = $weer_temp;
+        $data[$key]['weer_vochtigheid'] = $weer_vochtigheid;
     }
 
     //merge
